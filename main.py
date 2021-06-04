@@ -14,10 +14,10 @@ import re
 import string
 import preprocessor as p
 
-consumer_key = 
-consumer_secret = 
-access_key = 
-access_secret = 
+consumer_key = "ivtiXG3MO2jmFHY7afJIF6UhD"
+consumer_secret = "cohNK35JD05ci7BJDaM1krDMVD4LUyPQCUlf6XUSiBaTDE49j7"
+access_key = "795598438289129472-7jjuqTkYWm7U771AxFdXCFI1dWfI51g"
+access_secret = "ulU4SD2RNPkrp6iNsUJ5cYxLSsVD45BKRLio6S492U0FU"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
@@ -32,6 +32,7 @@ if sys.stderr.encoding != 'u30fc':
 def EPL():
     csvFile = open('EPL', 'a', encoding='utf-8')
     csvWriter = csv.writer(csvFile)
+    print("EPL Running")
 
     search_words = "EPL OR epl OR premier_league OR ManUtd OR ManCity OR Arsenal OR Chelsea OR spurs OR liverpool"
     new_search = search_words + " -filter:retweets"
@@ -233,9 +234,69 @@ def NBA():
                             [tweet.user.location.encode('utf-8')],
                             [tweet.entities["hashtags"]]])
 
+def Volleyball():
+    csvFile = open('Volley', 'a', encoding='utf-8')
+    csvWriter = csv.writer(csvFile)
+    print("volley Running")
+
+    search_words = "volleyballworld OR Volleyball OR volleyball OR VNL OR FIVB OR NORCECA OR usavolleyball OR CEVolleyball"
+    new_search = search_words + " -filter:retweets"
+
+    for tweet in tweepy.Cursor(api.search, q=new_search, count=10,
+                               lang="en",
+                               since_id=0).items():
+        # print(tweet.entities["hashtags"])
+        # if "NFL" not in tweet.text.encode('utf-8'):
+
+        csvWriter.writerow([[tweet.created_at], [tweet.text.encode('utf-8')],
+                            [tweet.user.screen_name.encode('utf-8')],
+                            [tweet.user.location.encode('utf-8')],
+                            [tweet.entities["hashtags"]]])
+
+
+def TableTennis():
+    csvFile = open('TT', 'a', encoding='utf-8')
+    csvWriter = csv.writer(csvFile)
+    print("TT Running")
+
+    search_words = "UltTableTennis OR TableTennis OR ITTF OR iitfworld"
+    new_search = search_words + " -filter:retweets"
+
+    for tweet in tweepy.Cursor(api.search, q=new_search, count=10,
+                               lang="en",
+                               since_id=0).items():
+        # print(tweet.entities["hashtags"])
+        # if "NFL" not in tweet.text.encode('utf-8'):
+
+        csvWriter.writerow([[tweet.created_at], [tweet.text.encode('utf-8')],
+                            [tweet.user.screen_name.encode('utf-8')],
+                            [tweet.user.location.encode('utf-8')],
+                            [tweet.entities["hashtags"]]])
+
+
+def Baseball():
+    csvFile = open('baseball', 'a', encoding='utf-8')
+    csvWriter = csv.writer(csvFile)
+    print("baseball  Running")
+
+    search_words = "MLB OR Baseball OR MLBNetwork"
+    new_search = search_words + " -filter:retweets"
+
+    for tweet in tweepy.Cursor(api.search, q=new_search, count=10,
+                               lang="en",
+                               since_id=0).items():
+        # print(tweet.entities["hashtags"])
+        # if "NFL" not in tweet.text.encode('utf-8'):
+
+        csvWriter.writerow([[tweet.created_at], [tweet.text.encode('utf-8')],
+                            [tweet.user.screen_name.encode('utf-8')],
+                            [tweet.user.location.encode('utf-8')],
+                            [tweet.entities["hashtags"]]])
+
+
 if __name__ == '__main__':
-    # p1 = Process(target=Cricket())
-    # # p1.run()
+    p1 = Process(target=Cricket())
+    # p1.run()
     p2 = Process(target=Bundesliga())
     p2.run()
     p3 = Process(target=Others())
@@ -256,6 +317,12 @@ if __name__ == '__main__':
     p10.run()
     p11 = Process(target=NBA())
     p11.run()
+    p12 = Process(target=Volleyball())
+    p12.run()
+    p13 = Process(target=TableTennis())
+    p13.run()
+    p14 = Process(target=Baseball())
+    p14.run()
 
 
 
