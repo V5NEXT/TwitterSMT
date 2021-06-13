@@ -14,10 +14,10 @@ import re
 import string
 import preprocessor as p
 
-consumer_key = "ivtiXG3MO2jmFHY7afJIF6UhD"
-consumer_secret = "cohNK35JD05ci7BJDaM1krDMVD4LUyPQCUlf6XUSiBaTDE49j7"
-access_key = "795598438289129472-7jjuqTkYWm7U771AxFdXCFI1dWfI51g"
-access_secret = "ulU4SD2RNPkrp6iNsUJ5cYxLSsVD45BKRLio6S492U0FU"
+# consumer_key = "ivtiXG3MO2jmFHY7afJIF6UhD"
+# consumer_secret = "cohNK35JD05ci7BJDaM1krDMVD4LUyPQCUlf6XUSiBaTDE49j7"
+# access_key = "795598438289129472-7jjuqTkYWm7U771AxFdXCFI1dWfI51g"
+# access_secret = "ulU4SD2RNPkrp6iNsUJ5cYxLSsVD45BKRLio6S492U0FU"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
